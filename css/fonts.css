@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'OpenSansBold';
+  src: url('../fonts/Open_Sans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSansRegular';
+  src: url('../fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSansMedium';
+  src: url('../fonts/Open_Sans/OpenSans-Medium.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'OpenSansLight';
+  src: url('../fonts/Open_Sans/OpenSans-Light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+/*# sourceMappingURL=fonts.css.map */

@@ -1,0 +1,232 @@
+@import "colors";
+@import "fonts";
+
+@box_shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.header-font(@letter_spacing) {
+  font-size: 12px;
+  letter-spacing: @letter_spacing;
+  text-transform: uppercase;
+}
+
+body {
+  background-color: @background;
+}
+
+.page-wrapper {
+  display: grid;
+  grid-template-rows: 60px auto;
+  grid-row-gap: 50px;
+  width: 960px;
+  margin: 0 auto;
+  color: @main_text;
+  font-family: 'OpenSansRegular', sans-serif;
+
+
+  .site-logo {
+    width: 60px;
+    justify-self: center;
+  }
+
+  .ticket-main {
+    display: grid;
+    grid-template-columns: 5fr 9fr;
+    grid-column-gap: 20px;
+    margin: 0 103px;
+  }
+}
+
+.ticket-params {
+  display: grid;
+  grid-template-rows: 1fr minmax(min-content, auto);
+  grid-row-gap: 20px;
+
+  .ticket-stops-parameters,
+  .ticket-company-filter {
+    display: grid;
+    grid-template-rows: 54px 1fr;
+    position: relative;
+    background-color: @white;
+    border-radius: 5px;
+    box-shadow: @box_shadow;
+
+    .ticket-filter-header {
+      margin: 20px;
+      .header-font(0.7px);
+    }
+  }
+}
+
+.stops-checkbox-wrapper,
+.company-radio-button-wrapper {
+  margin-bottom: 20px;
+  .ticket-label-wrapper:hover {
+    background-color: @light_blue;
+  }
+
+  .company-radio-label,
+  .stops-checkbox-label {
+    display: grid;
+    grid-template-columns: 20px auto;
+    grid-gap: 10px  ;
+    height: 40px;
+    margin: 0 20px;
+    align-items: center;
+    font-family: 'OpenSansLight', sans-serif;
+    font-size: 13px;
+
+  }
+
+  input {
+    &[type='checkbox'],
+    &[type='radio'] {
+      display: grid;
+      place-content: center;
+      appearance: none;
+      margin: 0;
+      color: #9abbce;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #9abbce;
+      transform: translateY(1px);
+
+      &::before {
+        content: '';
+        width: 15px;
+        height: 15px;
+        transform: scale(0);
+        transform-origin: center;
+        transition: 120ms transform ease-in-out;
+        background-color: @main_blue;
+      }
+
+      &:checked {
+        border-color: @main_blue;
+        &::before {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  input[type='checkbox'] {
+    border-radius: 2px;
+
+    &::before {
+      clip-path: polygon(83.01% 20.36%, 90.37% 27.71%, 43.75% 74.36%, 9.41% 52.86%, 16.03% 42.28%, 43.75% 59.64%);
+    }
+  }
+
+  input[type='radio'] {
+    border-radius: 50%;
+
+    &::before {
+      clip-path: circle(6px);
+    }
+  }
+}
+
+.tickets-list {
+  width: 502px;
+
+  &-container {
+    display: grid;
+    grid-row-gap: 20px;
+  }
+
+  .tickets-filter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    letter-spacing: 0.8px;
+    height: 50px;
+    margin-bottom: 20px;
+
+    .ticket-option {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      border-left: 1px solid @secondary_color;
+      border-top: 1px solid @secondary_color;
+      border-bottom: 1px solid @secondary_color;
+
+      &:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      &:last-child {
+        border-right: 1px solid @secondary_color;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      &.selected {
+        background-color: @main_blue;
+        color: @white;
+
+        &:hover {
+          background-color: lighten(@main_blue, 5%);
+        }
+      }
+
+      &:hover {
+        background-color: @light_blue;
+      }
+    }
+  }
+
+  .ticket {
+    height: 184px;
+    background-color: @white;
+    border-radius: 5px;
+    box-shadow: @box_shadow;
+
+    &-wrapper {
+      display: grid;
+      grid-template-rows: 36px auto;
+      grid-row-gap: 19px;
+      padding: 20px;
+
+      .ticket-header {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-content: center;
+
+        .ticket-price {
+          align-self: center;
+          color: @main_blue;
+          font-size: 1.5em;
+        }
+
+        .ticket-company-logo {
+          width: 110px;
+          height: 36px;
+          justify-self: end;
+        }
+      }
+
+      .ticket-info {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-row-gap: 10px;
+
+        &-forward,
+        &-backward {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-column-gap: 21px;
+          font-size: 0.875em;
+          cursor: default;
+        }
+
+        .flight-header {
+          padding: 2px 0;
+          color: @header_silver;
+          .header-font(0.5px);
+        }
+      }
+    }
+  }
+}

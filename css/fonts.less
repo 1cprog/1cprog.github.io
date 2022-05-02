@@ -1,0 +1,13 @@
+.font-face(@font-family, @filepath, @font-weight, @font-style) {
+  @font-face {
+    font-family: @font-family;
+    src: url('../fonts/Open_Sans/@{filepath}.ttf') format('truetype');
+    font-weight: @font-weight;
+    font-style: @font-style;
+  }
+}
+
+.font-face('OpenSansBold', 'OpenSans-Bold', 600, normal);
+.font-face('OpenSansRegular', 'OpenSans-Regular', 400, normal);
+.font-face('OpenSansMedium', 'OpenSans-Medium', 400, normal);
+.font-face('OpenSansLight', 'OpenSans-Light', 100, normal);

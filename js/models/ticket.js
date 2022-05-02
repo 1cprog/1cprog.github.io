@@ -1,0 +1,1 @@
+app.models.Ticket = Backbone.Model.extend({})
