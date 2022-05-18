@@ -37,7 +37,7 @@ body {
 
 .ticket-params {
   display: grid;
-  grid-template-rows: 1fr minmax(min-content, auto);
+  grid-template-rows: min-content min-content;
   grid-row-gap: 20px;
 
   .ticket-stops-parameters,
@@ -178,7 +178,6 @@ body {
   }
 
   .ticket {
-    height: 184px;
     background-color: @white;
     border-radius: 5px;
     box-shadow: @box_shadow;
@@ -209,11 +208,9 @@ body {
 
       .ticket-info {
         display: grid;
-        grid-template-rows: repeat(2, 1fr);
         grid-row-gap: 10px;
 
-        &-forward,
-        &-backward {
+        &-segment {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           grid-column-gap: 21px;
@@ -227,6 +224,21 @@ body {
           .header-font(0.5px);
         }
       }
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+
+  .page-list {
+    display: flex;
+    padding: 0;
+    list-style: none;
+
+    .page-list-item {
+      padding: 0 5px;
     }
   }
 }

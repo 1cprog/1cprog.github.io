@@ -1,0 +1,1 @@
+const CompanyModel = Backbone.Model.extend()

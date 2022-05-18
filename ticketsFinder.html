@@ -14,163 +14,114 @@
                 <div class="ticket-filter-header">Количество пересадок</div>
                 <div class="stops-checkbox-wrapper">
                     <div class="ticket-label-wrapper">
-                        <label for="without-stops" class="stops-checkbox-label">
-                            <input type="checkbox" name="without-stops" id="without-stops" checked>
-                            Без пересадок
+                        <label for="non-stop" class="stops-checkbox-label">
+                            <input type="checkbox" name="non-stop" id="non-stop">
+                            Без остановок
                         </label>
                     </div>
                     <div class="ticket-label-wrapper">
                         <label for="one-stop" class="stops-checkbox-label">
                             <input type="checkbox" name="one-stop" id="one-stop">
-                            1 пересадка
+                            1 остановка
                         </label>
                     </div>
                     <div class="ticket-label-wrapper">
                         <label for="two-stops" class="stops-checkbox-label">
                             <input type="checkbox" name="two-stops" id="two-stops">
-                            2 пересадки
+                            2 остановки
                         </label>
                     </div>
                     <div class="ticket-label-wrapper">
                         <label for="three-stops" class="stops-checkbox-label">
                             <input type="checkbox" name="three-stops" id="three-stops">
-                            3 пересадки
+                            3 остановки
                         </label>
                     </div>
                 </div>
             </div>
             <div class="ticket-company-filter">
                 <div class="ticket-filter-header">Компания</div>
-                <div class="company-radio-button-wrapper">
-                    <div class="ticket-label-wrapper">
-                        <label for="all-company" class="company-radio-label">
-                            <input type="radio" name="company-filter" id="all-company" value="all-company" checked>
-                            Все
-                        </label>
-                    </div>
-                    <div class="ticket-label-wrapper">
-                        <label for="s7" class="company-radio-label">
-                            <input type="radio" name="company-filter" id="s7" value="s7">
-                            s7
-                        </label>
-                    </div>
-                    <div class="ticket-label-wrapper">
-                        <label for="XiamenAir" class="company-radio-label">
-                            <input type="radio" name="company-filter" id="XiamenAir" value="XiamenAir">
-                            XiamenAir
-                        </label>
-                    </div>
-                </div>
+                <div class="company-radio-button-wrapper"></div>
             </div>
         </div>
         <div class="flight-container">
             <div class="tickets-list">
                 <div class="tickets-filter"></div>
-                <div class="tickets-list-container">
-                    <div class="ticket">
-                        <div class="ticket-wrapper">
-                            <div class="ticket-header">
-                                <div class="ticket-price">13 400 P</div>
-                                <div class="ticket-company-logo"></div>
-                            </div>
-                            <div class="ticket-info">
-                                <div class="ticket-info-forward">
-                                    <div class="ticket-route-wrapper">
-                                        <div class="ticket-route-header flight-header">MOW &ndash; EKT</div>
-                                        <div class="ticket-route-time">10:45 &ndash; 08:00</div>
-                                    </div>
-                                    <div class="ticket-period-wrapper">
-                                        <div class="ticket-period-header flight-header">В ПУТИ</div>
-                                        <div class="ticket-period-value">21ч 15м</div>
-                                    </div>
-                                    <div class="ticket-stops-wrapper">
-                                        <div class="ticket-stops-header flight-header">2 ПЕРЕСАДКИ</div>
-                                        <div class="ticket-stops-list">HKG, JNB</div>
-                                    </div>
-                                </div>
-                                <div class="ticket-info-backward">
-                                    <div class="ticket-route-wrapper">
-                                        <div class="ticket-route-header flight-header">EKT &ndash; MOW</div>
-                                        <div class="ticket-route-time">11:20 &ndash; 00:50</div>
-                                    </div>
-                                    <div class="ticket-period-wrapper">
-                                        <div class="ticket-period-header flight-header">В ПУТИ</div>
-                                        <div class="ticket-period-value">13ч 30м</div>
-                                    </div>
-                                    <div class="ticket-stops-wrapper">
-                                        <div class="ticket-stops-header flight-header">1 ПЕРЕСАДКА</div>
-                                        <div class="ticket-stops-list">HKG</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="tickets-list-container"></div>
             </div>
         </div>
     </div>
+    <div class="footer pagination-section">
+        <ul class="page-list"></ul>
+    </div>
 </div>
+<script type="text/template" id="company-filter">
+    {{#each company}}
+    <div class="ticket-label-wrapper">
+        <label for="{{this.id}}" class="company-radio-label">
+            <input type="radio" name="company-filter" id="{{this.id}}" value="{{this.name}}">
+            {{this.name}}
+        </label>
+    </div>
+    {{/each}}
+</script>
 <script type="text/template" id="ticket-sort">
-  {{#each elem}}
-      <div class="{{key}} ticket-option">{{value}}</div>
-  {{/each}}
+    {{#each elem}}
+    <div class="{{key}}-ticket ticket-option" data-sort="{{key}}">{{value}}</div>
+    {{/each}}
 </script>
 <script type="text/template" id="ticket-template">
     {{#each tickets}}
-        <div class="ticket">
-            <div class="ticket-wrapper">
-                <div class="ticket-header">
-                    <div class="ticket-price">{{ price }} P</div>
-                    <div class="ticket-company-logo">
-                        <img src="./img/{{companyId.id}}.svg" alt="{{companyId.name}}">
-                    </div>
-                </div>
-                <div class="ticket-info">
-                    <div class="ticket-info-forward">
-                        <div class="ticket-route-wrapper">
-                            <div class="ticket-route-header flight-header">MOW &ndash; EKT</div>
-                            <div class="ticket-route-time">10:45 &ndash; 08:00</div>
-                        </div>
-                        <div class="ticket-period-wrapper">
-                            <div class="ticket-period-header flight-header">В ПУТИ</div>
-                            <div class="ticket-period-value">21ч 15м</div>
-                        </div>
-                        <div class="ticket-stops-wrapper">
-                            <div class="ticket-stops-header flight-header">2 ПЕРЕСАДКИ</div>
-                            <div class="ticket-stops-list">HKG, JNB</div>
-                        </div>
-                    </div>
-                    <div class="ticket-info-backward">
-                        <div class="ticket-route-wrapper">
-                            <div class="ticket-route-header flight-header">EKT &ndash; MOW</div>
-                            <div class="ticket-route-time">11:20 &ndash; 00:50</div>
-                        </div>
-                        <div class="ticket-period-wrapper">
-                            <div class="ticket-period-header flight-header">В ПУТИ</div>
-                            <div class="ticket-period-value">13ч 30м</div>
-                        </div>
-                        <div class="ticket-stops-wrapper">
-                            <div class="ticket-stops-header flight-header">1 ПЕРЕСАДКА</div>
-                            <div class="ticket-stops-list">HKG</div>
-                        </div>
-                    </div>
+    <div class="ticket">
+        <div class="ticket-wrapper">
+            <div class="ticket-header">
+                <div class="ticket-price">{{ priceFormatted }} P</div>
+                <div class="ticket-company-logo">
+                    <img src="./img/{{company.id}}.svg" alt="{{companyId.name}}">
                 </div>
             </div>
+            <div class="ticket-info">
+                {{#each this.segments}}
+                <div class="ticket-info-segment">
+                    <div class="ticket-route-wrapper">
+                        <div class="ticket-route-header flight-header">{{this.origin}} &ndash; {{this.destination}}
+                        </div>
+                        <div class="ticket-route-time">{{this.startTime}} &ndash; {{this.endTime}}</div>
+                    </div>
+                    <div class="ticket-period-wrapper">
+                        <div class="ticket-period-header flight-header">В ПУТИ</div>
+                        <div class="ticket-period-value">{{this.duration.formatted}}</div>
+                    </div>
+                    <div class="ticket-stops-wrapper">
+                        <div class="ticket-stops-header flight-header">{{this.stops.description}}</div>
+                        <div class="ticket-stops-list">{{this.stops.stops}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
         </div>
+    </div>
     {{/each}}
 </script>
 
-<script src="./js/libs/jquery-3.6.0.min.js"></script>
-<script src="./js/libs/handlebars-v4.7.7.js"></script>
-<script src="./js/libs/underscore-umd-min.js"></script>
-<script src="./js/libs/backbone-min.js"></script>
-<script src="./js/App.js"></script>
-<script src="./js/views/listView.js"></script>
-<script src="./js/views/costView.js"></script>
-<script src="./js/models/company.js"></script>
-<script src="./js/models/ticket.js"></script>
-<script src="./js/collections/companies.js"></script>
-<script src="./js/collections/segments.js"></script>
-<script src="./js/collections/tickets.js"></script>
+<script src="js/libs/jquery-3.6.0.min.js"></script>
+<script src="js/libs/handlebars-v4.7.7.js"></script>
+<script src="js/libs/underscore-umd-min.js"></script>
+<script src="js/libs/backbone-min.js"></script>
+<script src="js/const.js"></script>
+<script src="js/App.js"></script>
+<script src="js/routers/ticketsRouter.js"></script>
+<script src="js/models/companyModel.js"></script>
+<script src="js/models/ticketModel.js"></script>
+<script src="js/models/segmentModel.js"></script>
+<script src="js/models/ticketFiltersModel.js"></script>
+<script src="js/collections/companiesCollection.js"></script>
+<script src="js/collections/segmentsCollection.js"></script>
+<script src="js/collections/ticketsCollection.js"></script>
+<script src="js/views/ticketsListView.js"></script>
+<script src="js/views/costingSelectView.js"></script>
+<script src="js/views/companyFilterView.js"></script>
+<script src="js/views/stopsFilterView.js"></script>
+<script src="js/views/paginatorView.js"></script>
 </body>
 </html>

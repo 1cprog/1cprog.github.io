@@ -46,7 +46,7 @@ body {
 }
 .ticket-params {
   display: grid;
-  grid-template-rows: 1fr minmax(min-content, auto);
+  grid-template-rows: min-content min-content;
   grid-row-gap: 20px;
 }
 .ticket-params .ticket-stops-parameters,
@@ -185,7 +185,6 @@ body {
   background-color: #F1FCFF;
 }
 .tickets-list .ticket {
-  height: 184px;
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -213,11 +212,9 @@ body {
 }
 .tickets-list .ticket-wrapper .ticket-info {
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
   grid-row-gap: 10px;
 }
-.tickets-list .ticket-wrapper .ticket-info-forward,
-.tickets-list .ticket-wrapper .ticket-info-backward {
+.tickets-list .ticket-wrapper .ticket-info-segment {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 21px;
@@ -230,5 +227,17 @@ body {
   font-size: 12px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.footer .page-list {
+  display: flex;
+  padding: 0;
+  list-style: none;
+}
+.footer .page-list .page-list-item {
+  padding: 0 5px;
 }
 /*# sourceMappingURL=flightFinderStyle.css.map */
