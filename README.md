@@ -1,3 +1,3 @@
 # aviasales
 
-Демо проекта https://1cprog.github.io/
+Project demo https://1cprog.github.io/
